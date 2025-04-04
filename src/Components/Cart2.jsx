@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { MdHome } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
 import Nav from "./Nav";
-import all from "../assets/emptycart.png"
+import all from "../assets/emptycart.png";
+import { toast } from "react-toastify";
 import Footer from "./Footer";
 
 const Cart2 = () => {
@@ -127,7 +128,10 @@ const Cart2 = () => {
                         </td>
                         <td className="px-4 py-3 text-center">
                           <button
-                            onClick={() => handleRemove(item.id)}
+                            onClick={() => {handleRemove(item.id);
+                                toast.error("Item removed from Cart");
+                              
+                             }}
                             className="text-red-500 hover:text-red-600"
                           >
                             Remove

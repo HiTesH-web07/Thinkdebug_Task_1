@@ -58,7 +58,7 @@ const Wishlist = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
             {wishlistItems.map((item) => (
-              <div key={item.id} className="bg-white  w-[280px] h-[80px]rounded-lg shadow-sm p-4 relative">
+              <div key={item.id} className="bg-white w-[280px] rounded-lg shadow-sm p-4 flex flex-col justify-between h-full relative">
                 <button
                   onClick={() => handleRemove(item.id)}
                   className="absolute top-2 right-2 text-gray-400 hover:text-red-500 transition"
