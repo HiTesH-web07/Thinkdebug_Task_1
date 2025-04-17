@@ -1,4 +1,3 @@
-// Components/Wishlist.js
 import React from 'react';
 import Nav from './Nav';
 import { Link } from 'react-router-dom';
@@ -38,9 +37,9 @@ const Wishlist = () => {
             <Link to="/" className="flex items-center text-blue-500 hover:text-blue-700">
               <MdHome className="w-5 h-5 mr-1" />
               <span>Home</span>
-            </Link>
             <IoIosArrowForward className="text-gray-500" />
             <span className="text-gray-600">My Wishlist</span>
+            </Link>
           </div>
         </div>
 
@@ -84,15 +83,15 @@ const Wishlist = () => {
                 </p>
                 <p className="text-xl font-bold mb-4">From ${item.price.toLocaleString()}</p>
                 { }
+                
                 <button
-                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-2.5 rounded-md transition-colors duration-200"
-                  onClick={() => {
-                    dispatch(AddItem({ id, name, image, price, qty: 1 }));
-                    toast.success("Added to Cart");
-                  }}
+                  onClick={() => handleAddToCart(item)}
+                  className="w-full bg-orange-500 text-white py-2 rounded-lg flex items-center justify-center hover:bg-orange-600 transition"
                 >
+                  <AiOutlineThunderbolt className="mr-2" />
                   Add to Cart
                 </button>
+    
               </div>
             ))}
           </div>

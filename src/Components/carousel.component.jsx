@@ -26,15 +26,7 @@ export default function Carousel({ children: slides, autoslide = false, autoslid
         ))}
       </div>
 
-      {/* Navigation Buttons
-      <div className="absolute inset-0 flex items-center justify-between p-4">
-        <button className="p-1 rounded-full shadow bg-white text-gray-800 hover:bg-gray-200" onClick={prev}>
-          <BiChevronLeft size={30} />
-        </button>
-        <button className="p-1 rounded-full shadow bg-white text-gray-800 hover:bg-gray-200" onClick={next}>
-          <BiChevronRight size={30} />
-        </button>
-      </div> */}
+     
 
       {/* Indicators */}
       <div className="absolute bottom-4 left-0 right-0 flex items-center justify-center gap-2">

@@ -1,4 +1,3 @@
-// App.js
 import React from 'react';
 import Home from './Pages/Home';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -6,6 +5,9 @@ import Cart2 from './Components/Cart2';
 import Wishlist from './Components/Wishlist';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Description from './Components/Description';
+import Login from './Components/Login';
+import SignUp from './Components/SignUp';
 
 const App = () => {
   return (
@@ -25,6 +27,9 @@ const App = () => {
         <Route path='/' element={<Home/>}/>
         <Route path='/cart' element={<Cart2/>}/>
         <Route path='/wishlist' element={<Wishlist/>}/>
+        <Route path='/description' element={<Description/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/signup' element={<SignUp/>}/>
       </Routes>
     </Router>
   );

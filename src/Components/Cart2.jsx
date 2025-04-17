@@ -22,6 +22,7 @@ const Cart2 = () => {
 
   const handleRemove = (id) => {
     dispatch(RemoveItem(id));
+    toast.error("Item Removed from cart")
   };
 
   const handleIncrement = (id) => {
@@ -104,8 +105,8 @@ const Cart2 = () => {
                             <button
                               onClick={() =>
                                 item.qty > 1
-                                  ? handleDecrement(item.id)
-                                  : handleRemove(item.id)
+                                  ? handleDecrement(item.id):1
+                                 
                               }
                               className="w-8 h-8 rounded-full border flex items-center justify-center hover:bg-gray-100 transition"
                             >
@@ -129,7 +130,6 @@ const Cart2 = () => {
                         <td className="px-4 py-3 text-center">
                           <button
                             onClick={() => {handleRemove(item.id);
-                                toast.error("Item removed from Cart");
                               
                              }}
                             className="text-red-500 hover:text-red-600"

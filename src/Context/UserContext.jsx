@@ -24,4 +24,4 @@ setShowCart
   )
 }
 
-export default UserContext
+export default UserContext;

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Nav from "../Components/Nav";
 import banner1 from "../assets/banner-1.jpg";
 import banner2 from "../assets/banner-2.jpg";
@@ -7,34 +7,18 @@ import { dummydata } from "../srore";
 import Categories from "../Categories";
 import Cart from "../Components/Cart";
 import { dataContext } from "../Context/UserContext";
-import All from "../assets/All.png";
-import { RxCross2 } from "react-icons/rx";
-import Cart2 from "../Components/Cart2";
 import { useSelector } from "react-redux";
-import { nanoid } from "@reduxjs/toolkit";
-import { ToastContainer, toast } from 'react-toastify';
 import NewsLetter from "../Components/NewsLetter";
 import Footer from "../Components/Footer";
-import Wishlist from "../Components/Wishlist";
 
 const Home = () => {
   const slides = [
-    <img
-      key={1}
-      src={banner1}
-      className="w-full h-full object-cover"
-      alt="Banner 1"
-    />, 
-    <img
-      key={2}
-      src={banner2}
-      className="w-full h-full object-cover"
-      alt="Banner 2"
-    />,
+    <img key={1} src={banner1} className="w-full h-full object-cover" alt="Banner 1" />,
+    <img key={2} src={banner2} className="w-full h-full object-cover" alt="Banner 2" />,
   ];
 
-  let { cate, setCate, input, showCart, setShowCart } = useContext(dataContext);
-  
+  let { cate, setCate, input } = useContext(dataContext);
+
   function filter(category) {
     if (category === "All Products") {
       setCate(dummydata);
@@ -44,15 +28,23 @@ const Home = () => {
     }
   }
 
-  let items = useSelector((state) => state.cart);
-  let subtotal = items.reduce((total, item) => total + item.price * item.qty, 0);
-  let deliveryFee = 20;
-  let taxes = (subtotal * 0.5) / 100;
-  let total = Math.floor(subtotal + deliveryFee + taxes);
+  useEffect(() => {
+    if (input.trim() === "") {
+      setCate(dummydata);
+    } else {
+      const newList = dummydata.filter(item =>
+        item.name.toLowerCase().includes(input.toLowerCase())
+      );
+      setCate(newList);
+    }
+  }, [input]);
 
   return (
     <div className="w-full min-h-screen">
-      <Nav />
+          
+          <Nav />
+   
+
       {!input ? (
         <>
           <div className="w-full bg-gray-100">
@@ -60,7 +52,7 @@ const Home = () => {
               <Carousel autoslide={true}>{slides}</Carousel>
             </div>
           </div>
-          
+
           <div className="flex flex-wrap justify-center items-center gap-5 w-full pt-7">
             {Categories.map((item) => (
               <div
@@ -76,9 +68,8 @@ const Home = () => {
         </>
       ) : null}
 
- 
-      <div className="flex flex-wrap justify-center gap-5  items-center pt-8 pb-8 ">
-        {cate.length > 1 ? (
+      <div className="flex flex-wrap justify-center gap-5 items-center pt-8 pb-8">
+        {cate.length > 0 ? (
           cate.map((item) => (
             <Cart
               key={item.id}
@@ -90,20 +81,18 @@ const Home = () => {
             />
           ))
         ) : (
-          <div className=" text-center text-2xl pt-6 text-orange-500 font-semibold">
+          <div className="text-center text-2xl pt-6 text-orange-500 font-semibold">
             No Product Found
           </div>
         )}
-     
       </div>
-
 
       <div className="w-full bg-gray-100">
         <div className="w-[95%] m-auto py-10">
           <NewsLetter />
         </div>
       </div>
-      
+
       <div className="w-full bg-white pt-8">
         <div className="w-[85%] m-auto py-10">
           <Footer />

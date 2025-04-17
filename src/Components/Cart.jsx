@@ -8,7 +8,7 @@ import { addToWishlist, removeFromWishlist } from "../redux/wishlistSlice";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 
-function Cart({ id, name, image, price, category }) {
+function Cart({ id, name, image, price, category, description}) {
   const dispatch = useDispatch();
   const wishlistItems = useSelector((state) => state.wishlist);
   const isInWishlist = wishlistItems.some(item => item.id === id);
@@ -27,13 +27,18 @@ function Cart({ id, name, image, price, category }) {
   return (
     <div className="w-[260px] h-[390px] bg-white rounded-lg flex flex-col gap-3 shadow-md hover:shadow-xl border border-gray-200 transition-all p-4">
       {/* Image Container */}
-      <div className="w-full h-[250px] overflow-hidden rounded-lg bg-gray-100 flex justify-center items-center">
-        <img 
-          src={image} 
-          className="w-full h-full object-contain object-center transition-transform duration-300 hover:scale-105" 
-          alt={name}
-        />
-      </div>
+       
+      <Link 
+  to="/description" 
+  state={{ product: { id, name, image, price, category , description} }}
+  className="w-full h-[250px] overflow-hidden rounded-lg bg-gray-100 flex justify-center items-center"
+>
+  <img 
+    src={image} 
+    className="w-full h-full object-contain object-center transition-transform duration-300 hover:scale-105" 
+    alt={name}
+  />
+</Link>
 
       {/* Product Name & Category */}
       <div className="text-lg font-semibold text-gray-800">{name}</div>
