@@ -67,6 +67,7 @@ function Cart({ id, name, image, price, category, description}) {
           dispatch(AddItem({ id, name, image, price, qty: 1 }));
           toast.success("Item Added");
         }}
+        
       >
         <AiOutlineThunderbolt className="w-5 h-5 mr-2"/>
         Add to Cart

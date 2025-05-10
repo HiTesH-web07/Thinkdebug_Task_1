@@ -1,5 +1,5 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
-import logo from "../assets/logo.png";
+import kulies_logo from "../assets/kulies_logo.png";
 import { IoSearch } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { IoIosArrowDown } from "react-icons/io";
@@ -47,7 +47,7 @@ const Nav = () => {
     <div className="w-full h-[100px] flex justify-between items-center px-5 md:px-8 shadow-sm bg-white">
       {/* Logo */}
       <Link to='/' className="h-[140px] w-[140px] flex justify-center items-center">
-        <img src={logo} alt="Logo" className="object-contain" />
+        <img src={kulies_logo} alt="Logo" className="object-contain" />
       </Link>
 
       {/* Search Bar */}
@@ -55,6 +55,8 @@ const Nav = () => {
         className="w-[30%] md:w-[40%] h-[50px] bg-white flex items-center px-5 pr-0 gap-5 rounded-md border border-gray-300"
         onSubmit={(e) => e.preventDefault()}
       >
+
+    
         <input
           type="text"
           placeholder="Search For Products, Brands and More"
